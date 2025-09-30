@@ -15,30 +15,49 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="12dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
+            <EditText
                 android:id="@+id/txtInSatu"
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:text="TextView" />
+                android:layout_height="wrap_content"
+                android:hint="Angka 1"
+                android:textSize="20sp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/txtInDua"
                 android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:text="TextView" />
+                android:layout_height="wrap_content"
+                android:hint="Angka 2" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btnTambah"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:background="@color/white"
             android:text="+" />
 
     </LinearLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/frag_operasi"
+        android:name="latihan.c14230225.latihanuts.F_Satu"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginTop="25dp" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/frag_hasil"
+        android:name="latihan.c14230225.latihanuts.F_Hasil"
+        android:layout_width="match_parent"
+        android:layout_height="318dp"
+        android:layout_marginTop="20dp"/>
 
 </LinearLayout>
