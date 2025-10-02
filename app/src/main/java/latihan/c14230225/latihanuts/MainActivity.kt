@@ -2,6 +2,7 @@ package latihan.c14230225.latihanuts
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,14 +21,46 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val _txtSatu = findViewById<TextView>(R.id.txtInSatu)
-        val _txtDua = findViewById<TextView>(R.id.txtInDua)
+        val _txtSatu = findViewById<EditText>(R.id.txtInSatu)
+        val _txtDua = findViewById<EditText>(R.id.txtInDua)
         val _btnAdd = findViewById<Button>(R.id.btnTambah)
 
+        if (savedInstanceState == null) {
+            val fsatu = FSatu()
+            val bundle = Bundle().apply {
+                putInt("angka1", 0)
+                putInt("angka2", 0)
+            }
+            fsatu.arguments = bundle
 
+            replaceFragmentOp(fsatu)
+            replaceFragmentHasil(FHasil())
+        }
+
+
+        _btnAdd.setOnClickListener {
+            val angka1 = _txtSatu.text.toString().toInt()
+            val angka2 = _txtDua.text.toString().toInt()
+            val hasilOp = angka1 + angka2
+
+            val fragmentHasil = FHasil()
+            val bundleHasil = Bundle().apply {
+                putString("hasil", "$hasilOp")
+            }
+            fragmentHasil.arguments = bundleHasil
+            replaceFragmentHasil(fragmentHasil)
+
+            val fsatu = FSatu()
+            val bundleOp = Bundle().apply {
+                putInt("angka1", angka1)
+                putInt("angka2", angka2)
+            }
+            fsatu.arguments = bundleOp
+            replaceFragmentOp(fsatu)
+        }
     }
 
-    private fun replaceFragmentOperasi(fragment: Fragment){
+    private fun replaceFragmentOp(fragment: Fragment){
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
 
